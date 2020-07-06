@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import Stars from './stars'
 import RateIt from './rateit'
 
 
-export default function movieDetails(props) {
+export default function MovieDetails(props) {
 
     const mov = props.movie;
 
