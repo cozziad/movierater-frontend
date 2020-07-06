@@ -3,6 +3,9 @@ import React, { useState, useEffect } from 'react';
 export default function MovieList(props) {
 
     const [movies, setMovie] = useState([]);
+    const movieClicked = movie => evt => {
+        props.movieClicked(movie)
+    }
 
     useEffect(() => {
         fetch("http://127.0.0.1:8000/api/movies/", {
@@ -19,7 +22,11 @@ export default function MovieList(props) {
     return (
         <div>
             {movies && movies.map(movie => {
-                return <h2>{movie.title}</h2>
+                return (
+                    <div key={movie.id}>
+                        <h2 onClick={movieClicked(movie)}>{movie.title}</h2>
+                    </div>
+                )
             })}
         </div>
     )

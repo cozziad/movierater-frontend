@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.css';
-import MovieList from './components/movielist'
+import MovieList from './components/movieList'
+import MovieDetails from './components/movieDetails'
 
 function App() {
 
+  const [selectedMovie, setSelectedMovie] = useState(null);
 
+  const movieClicked = movie => {
+    setSelectedMovie(movie)
+  }
+
+  const loadMovie = movie => {
+    setSelectedMovie(movie)
+  }
 
   return (
     <div className="App">
@@ -13,8 +22,8 @@ function App() {
       </header>
 
       <div className="layout">
-        <MovieList />
-        <div>Movie Detail</div>
+        <MovieList movieClicked={movieClicked} />
+        <MovieDetails movie={selectedMovie} updateMovie={loadMovie} />
       </div>
     </div>
   );
