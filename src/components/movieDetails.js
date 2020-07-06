@@ -18,10 +18,10 @@ export default function movieDetails(props) {
                     <h1>{mov && mov.title}</h1>
                     <p>{mov && mov.description}</p>
                     <Stars movie={mov} />
-                    <p>{mov && mov.no_of_ratings} {mov.no_of_ratings == 1 ? 'rating' : 'ratings'} for this movie</p>
+                    <p>{mov && mov.no_of_ratings} {mov.no_of_ratings === 1 ? 'rating' : 'ratings'} for this movie</p>
                     <RateIt movie={mov} updateMovie={updateMovie} />
                 </div>
-            ) : (<div></div>)
+            ) : null
         }
         </React.Fragment>
     )

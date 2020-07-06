@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
 
 export default function MovieList(props) {
 
     const [movies, setMovie] = useState([]);
     const movieClicked = movie => evt => {
         props.movieClicked(movie)
+    }
+    const editClicked = movie => {
+        props.editClicked(movie);
     }
 
     useEffect(() => {
@@ -23,8 +28,10 @@ export default function MovieList(props) {
         <div>
             {movies && movies.map(movie => {
                 return (
-                    <div key={movie.id}>
+                    <div key={movie.id} className="movie-list">
                         <h2 onClick={movieClicked(movie)}>{movie.title}</h2>
+                        <FontAwesomeIcon icon={faEdit} onClick={() => editClicked(movie)} />
+                        <FontAwesomeIcon icon={faTrash} />
                     </div>
                 )
             })}

@@ -33,3 +33,13 @@
   font-size: 1.4rem;
   cursor: pointer;
 }
+
+.movie-list{
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+}
+
+.movie-list svg {
+  font-size: 1.2rem;
+  margin: 16p 5px;
+}

@@ -2,17 +2,21 @@ import React, { useState } from 'react';
 import './App.css';
 import MovieList from './components/movieList'
 import MovieDetails from './components/movieDetails'
+import MovieForm from './components/movie-form'
 
 function App() {
 
   const [selectedMovie, setSelectedMovie] = useState(null);
-
-  const movieClicked = movie => {
-    setSelectedMovie(movie)
-  }
+  const [editedMovie, setEditiedMovie] = useState(null);
 
   const loadMovie = movie => {
     setSelectedMovie(movie)
+    setEditiedMovie(null)
+  }
+
+  const editClicked = movie => {
+    setEditiedMovie(movie)
+    setSelectedMovie(null)
   }
 
   return (
@@ -22,8 +26,9 @@ function App() {
       </header>
 
       <div className="layout">
-        <MovieList movieClicked={movieClicked} />
+        <MovieList movieClicked={loadMovie} editClicked={editClicked} />
         <MovieDetails movie={selectedMovie} updateMovie={loadMovie} />
+        {editedMovie ? <MovieForm movie={editedMovie} /> : null}
       </div>
     </div>
   );
