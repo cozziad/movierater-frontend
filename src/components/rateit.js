@@ -35,7 +35,7 @@ export default function RateIt(props) {
             }
 
         }).then(resp => resp.json())
-            .then(resp => props.updateMovie(resp))
+            .then(resp => props.updateRating(resp))
             .catch(error => console.log(error))
     }
 

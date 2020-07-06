@@ -7,8 +7,8 @@ export default function movieDetails(props) {
 
     const mov = props.movie;
 
-    const updateMovie = movie => {
-        props.updateMovie(movie);
+    const updateRating = movie => {
+        props.updateRating(movie);
     }
 
     return (
@@ -19,7 +19,7 @@ export default function movieDetails(props) {
                     <p>{mov && mov.description}</p>
                     <Stars movie={mov} />
                     <p>{mov && mov.no_of_ratings} {mov.no_of_ratings === 1 ? 'rating' : 'ratings'} for this movie</p>
-                    <RateIt movie={mov} updateMovie={updateMovie} />
+                    <RateIt movie={mov} updateRating={updateRating} />
                 </div>
             ) : null
         }

@@ -19,6 +19,16 @@ function App() {
     setSelectedMovie(null)
   }
 
+  const updatedMovie = movie => {
+    // const newMovies = movies.map(mov => {
+    //   if (mov.id === movie.id) {
+    //     return movie;
+    //   } else { return mov; }
+
+    // })
+
+  }
+
   return (
     <div className="App">
       <header className="App-header">
@@ -27,8 +37,8 @@ function App() {
 
       <div className="layout">
         <MovieList movieClicked={loadMovie} editClicked={editClicked} />
-        <MovieDetails movie={selectedMovie} updateMovie={loadMovie} />
-        {editedMovie ? <MovieForm movie={editedMovie} /> : null}
+        <MovieDetails movie={selectedMovie} updateRating={loadMovie} />
+        {editedMovie ? <MovieForm movie={editedMovie} updatedMovie={updatedMovie} /> : null}
       </div>
     </div>
   );
