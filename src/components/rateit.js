@@ -1,10 +1,14 @@
 import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faStar } from '@fortawesome/free-solid-svg-icons'
+import { useCookies } from 'react-cookie';
+
 
 export default function RateIt(props) {
 
     const [highlighted, setHighlighted] = useState(-1);
+
+    const [token] = useCookies(['mr-token']);
 
     const highlightRate = highRate => evt => {
         setHighlighted(highRate);
@@ -15,7 +19,7 @@ export default function RateIt(props) {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Token d4f4aad2b8ba34d04d1110522e8ae0d1d9fbed18'
+                'Authorization': `Token ${token['mr-token']}`
             },
             body:
                 JSON.stringify({
@@ -31,7 +35,7 @@ export default function RateIt(props) {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': 'Token d4f4aad2b8ba34d04d1110522e8ae0d1d9fbed18'
+                'Authorization': `Token ${token['mr-token']}`
             }
 
         }).then(resp => resp.json())

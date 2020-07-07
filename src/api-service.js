@@ -1,5 +1,3 @@
-const TOKEN = "d4f4aad2b8ba34d04d1110522e8ae0d1d9fbed18"
-
 
 export class API {
 
@@ -25,13 +23,13 @@ export class API {
         return await resp.json()
     }
 
-    static async updateMovie(mov_id, body) {
+    static async updateMovie(mov_id, body, token) {
         try {
             const resp = await fetch(`http://127.0.0.1:8000/api/movies/${mov_id}/`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Token ${TOKEN}`
+                    'Authorization': `Token ${token}`
                 },
                 body: JSON.stringify(body)
             })
@@ -42,13 +40,13 @@ export class API {
         }
     }
 
-    static async createMovie(body) {
+    static async createMovie(body, token) {
         try {
             const resp = await fetch(`http://127.0.0.1:8000/api/movies/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Token ${TOKEN}`
+                    'Authorization': `Token ${token}`
                 },
                 body: JSON.stringify(body)
             })
@@ -59,13 +57,13 @@ export class API {
         }
     }
 
-    static async deleteMovie(mov_id) {
+    static async deleteMovie(mov_id, token) {
         try {
             const resp = await fetch(`http://127.0.0.1:8000/api/movies/${mov_id}/`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Token ${TOKEN}`
+                    'Authorization': `Token ${token}`
                 }
             })
         }

@@ -8,6 +8,13 @@ export default function Auth() {
     const [password, setPassword] = useState('');
     const [isLoginView, setIsLoginView] = useState(true);
 
+    const [token, setToken] = useCookies(['mr-token']);
+
+    useEffect(() => {
+        //console.log(token['mr-token'])
+        if (token['mr-token']) window.location.href = '/movies';
+    }, [token])
+
     const loginClicked = () => {
         API.loginUser({ username, password })
             .then(resp => setToken('mr-token', resp.token))
@@ -46,3 +53,4 @@ export default function Auth() {
         </div>
     )
 }
+
