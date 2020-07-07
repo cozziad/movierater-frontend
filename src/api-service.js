@@ -2,6 +2,29 @@ const TOKEN = "d4f4aad2b8ba34d04d1110522e8ae0d1d9fbed18"
 
 
 export class API {
+
+    static async loginUser(body) {
+        const resp = await fetch(`http://127.0.0.1:8000/auth/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+        return await resp.json()
+    }
+
+    static async registerUser(body) {
+        const resp = await fetch(`http://127.0.0.1:8000/api/users/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(body)
+        })
+        return await resp.json()
+    }
+
     static async updateMovie(mov_id, body) {
         try {
             const resp = await fetch(`http://127.0.0.1:8000/api/movies/${mov_id}/`, {
